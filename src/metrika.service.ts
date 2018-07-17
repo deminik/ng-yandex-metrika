@@ -37,6 +37,12 @@ export class Metrika {
     this.positionToId = this.counterConfigs.map(config => config.id);
   }
 
+  async rewriteConfig(config: YandexCounterConfig){
+    this.defaultCounterId = config.id.toString()
+    this.counterConfigs = [config];
+    this.positionToId = this.counterConfigs.map(config => config.id);
+  }
+
   async addFileExtension(extensions: string | string[], counterPosition?: number) {
     try {
       const counter = await this.counterIsLoaded(counterPosition);
